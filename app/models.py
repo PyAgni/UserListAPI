@@ -6,6 +6,9 @@ from .helper import random_pk, TIMEZONES
 
 
 class User(models.Model):
+	"""
+	User model
+	"""
 	user_id = models.CharField(max_length=9, primary_key=True, unique=True, blank=True, editable=False, default=random_pk)
 	real_name = models.CharField(max_length=32, blank=True)
 	tz = models.CharField(max_length=32, choices=TIMEZONES)
@@ -17,6 +20,9 @@ class User(models.Model):
 
 
 class Activity(models.Model):
+	"""
+	Activity Model
+	"""
 	user = models.ForeignKey(User, related_name='activities', on_delete=models.CASCADE)
 	start_time = models.DateTimeField(null=True, default=None)
 	end_time = models.DateTimeField(null=True, default=None)

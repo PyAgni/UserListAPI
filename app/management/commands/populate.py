@@ -7,8 +7,7 @@ from django.core.management.base import BaseCommand
 from django.utils.crypto import get_random_string
 
 
-from app.models import User,Activity
-
+from app.models import User, Activity
 from app.helper import random_pk, TIMEZONES
 
 

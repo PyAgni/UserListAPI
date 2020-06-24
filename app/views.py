@@ -12,7 +12,18 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = UserService.get_user_info()
 
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return Response({
+            'ok':True,
+            'members':serializer.data,
+            }
+        	)
 
 class ActivityViewSet(viewsets.ModelViewSet):
+    """
+    A viewset for viewing and editing activity instances.
+    """
 	serializer_class = ActivitySerializer
 	queryset = Activity.objects.all()
